@@ -6,13 +6,13 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="#DBCDCD">
+   >
 
     <ImageView
         android:id="@+id/img_logo"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@drawable/background"
+        android:src="@drawable/img_loginn"
         android:layout_alignParentRight="true"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Đăng nhập"
-            android:backgroundTint="#ff00"
+            android:backgroundTint="#1e90ff"
             android:textColor="@color/white"
             android:padding="10dp"
             android:layout_marginStart="10dp"/>

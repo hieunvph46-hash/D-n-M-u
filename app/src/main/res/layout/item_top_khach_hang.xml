@@ -10,7 +10,7 @@
         android:id="@+id/imgCustomer"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/ic_staff"
+        android:src="@drawable/img_topkhachhang"
         android:scaleType="centerCrop"
         android:layout_marginEnd="10dp"
         android:background="@android:color/darker_gray"

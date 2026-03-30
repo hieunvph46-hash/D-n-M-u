@@ -155,6 +155,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lưu"
+        android:backgroundTint="#1E90FF"
         android:layout_marginTop="16dp" />
 
     <!-- Nút Hủy -->
@@ -163,6 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hủy"
+        android:backgroundTint="#1E90FF"
         android:layout_marginTop="8dp" />
 
 </LinearLayout>

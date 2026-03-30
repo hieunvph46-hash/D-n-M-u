@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#1e90ff"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="Quản lý sản phẩm"
         app:navigationIcon="?attr/homeAsUpIndicator" />
@@ -53,7 +53,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_gio_hang"
+                android:src="@drawable/img_giohang"
                 android:contentDescription="Giỏ hàng" />
 
             <!-- Huy hiệu số lượng (Badge) -->
@@ -95,6 +95,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="16dp"
+            android:backgroundTint="#1E90FF"
             android:src="@android:drawable/ic_input_add"
             android:contentDescription="Thêm sản phẩm" />
 

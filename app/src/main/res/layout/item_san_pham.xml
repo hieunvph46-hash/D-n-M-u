@@ -12,7 +12,7 @@
         android:id="@+id/imgSanPham"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:src="@drawable/ic_products"
+        android:src="@drawable/img_sanpham"
         android:scaleType="centerCrop"
         android:layout_marginRight="10dp"
         android:background="@android:color/darker_gray"
@@ -67,9 +67,9 @@
         <ImageView
             android:id="@+id/imgGioHang"
             android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_gio_hang"
-            android:layout_marginEnd="10dp" />
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/img_giohang" />
 
         <!-- Nút sửa sản phẩm -->
         <ImageView

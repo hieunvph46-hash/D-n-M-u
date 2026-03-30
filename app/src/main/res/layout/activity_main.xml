@@ -18,39 +18,16 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#1E90FF"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:title="Đăng nhập"
+        app:title="LOGIN"
         app:navigationIcon="?attr/homeAsUpIndicator" />
-
-    <!-- Header -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="#E6DEDE"
-        android:layout_marginTop="8dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome to JPMart"
-            android:textColor="#2e3d3d"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:paddingLeft="45dp"
-            android:paddingTop="30dp"/>
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/logo_jpmart"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
 
     <!-- Background Welcome -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:background="@drawable/background_welcome"
+        android:background="@drawable/img_welcom"
         android:layout_marginTop="8dp"/>
 
     <LinearLayout
@@ -88,7 +65,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:paddingLeft="10dp"
-                    app:srcCompat="@drawable/ic_revenue"/>
+                    app:srcCompat="@drawable/img_doanhthu"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,7 +87,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:paddingLeft="10dp"
-                    app:srcCompat="@drawable/ic_top_products"/>
+                    app:srcCompat="@drawable/img_topsanpham"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -133,7 +110,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:paddingLeft="10dp"
-                    app:srcCompat="@drawable/ic_top_customers"/>
+                    app:srcCompat="@drawable/img_topkhachhang"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -176,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:paddingLeft="10dp"
-                app:srcCompat="@drawable/ic_products" />
+                app:srcCompat="@drawable/img_sanpham" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -200,7 +177,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:paddingLeft="10dp"
-                app:srcCompat="@drawable/ic_customers" />
+                app:srcCompat="@drawable/img_khachhang" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -224,7 +201,7 @@
                 android:id="@+id/img_hoa_don"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                app:srcCompat="@drawable/ic_orders" />
+                app:srcCompat="@drawable/img_hoadon" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -248,7 +225,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:paddingLeft="10dp"
-                app:srcCompat="@drawable/ic_categories" />
+                app:srcCompat="@drawable/img_danhmuc" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -272,7 +249,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:paddingLeft="10dp"
-                app:srcCompat="@drawable/employee" />
+                app:srcCompat="@drawable/img_nhanvien" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -312,7 +289,7 @@
                 android:id="@+id/img_doi_mat_khau"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:srcCompat="@drawable/ic_password"
+                app:srcCompat="@drawable/img_doimatkhau"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="10dp"/>
             <TextView
@@ -335,7 +312,7 @@
                 android:id="@+id/img_logout"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:srcCompat="@drawable/ic_logout"
+                app:srcCompat="@drawable/img_dangxuat"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="25dp"/>
             <TextView

@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center_vertical"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_products" />
+        android:src="@drawable/img_giohang" />
 
     <!-- Thông tin sản phẩm ở giữa -->
     <LinearLayout

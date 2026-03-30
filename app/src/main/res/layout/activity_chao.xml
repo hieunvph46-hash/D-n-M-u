@@ -4,12 +4,33 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="20dp">
 
     <ImageView
         android:id="@+id/imgChao"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/background_chao" />
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/img_loginn"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME JDMARK"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ứng dụng quản lý bán hàng chuyên nghiệp"
+        android:textSize="18sp"
+        android:textColor="#666666"
+        android:layout_marginTop="10dp" />
+
 </LinearLayout>
