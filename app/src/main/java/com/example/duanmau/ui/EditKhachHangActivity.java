@@ -27,9 +27,6 @@ public class EditKhachHangActivity extends AppCompatActivity {
         edtSdt = findViewById(R.id.edtSoDienThoai);
         btnLuu = findViewById(R.id.btnLuu);
         btnHuy = findViewById(R.id.btnHuy);
-        
-        // Hide email field if not in model
-        findViewById(R.id.edtEmail).setVisibility(View.GONE);
 
         dao = new KhachHangDAO(this);
         type = getIntent().getIntExtra("type", 0);

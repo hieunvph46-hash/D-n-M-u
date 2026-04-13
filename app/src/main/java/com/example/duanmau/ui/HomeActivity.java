@@ -1,6 +1,8 @@
 package com.example.duanmau.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -9,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.duanmau.R;
 
 public class HomeActivity extends AppCompatActivity {
-    LinearLayout lnDoanhThu, lnTopSanPham, lnTopKhachHang;
+    LinearLayout lnThongKe, lnDoanhThu, lnTopSanPham, lnTopKhachHang;
     LinearLayout lnSanPham, lnKhachHang, lnHoaDon, lnDanhMuc, lnNhanVien;
     LinearLayout lnDoiMatKhau, lnDangXuat;
     Toolbar toolbar;
@@ -24,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("JP Mart - Dashboard");
 
         // Thống kê
+        lnThongKe = findViewById(R.id.lnThongKe);
         lnDoanhThu = findViewById(R.id.lnDoanhThu);
         lnTopSanPham = findViewById(R.id.lnTopSanPham);
         lnTopKhachHang = findViewById(R.id.lnTopKhachHang);
@@ -56,11 +59,15 @@ public class HomeActivity extends AppCompatActivity {
             finish();
         });
 
-        // Phân quyền: Nếu không phải tài khoản admin (H) thì ẩn quản lý nhân viên
+        // Phân quyền
+        SharedPreferences pref = getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        String userRole = pref.getString("ROLE", "");
         String user = getIntent().getStringExtra("user");
-        if (user != null && !user.equals("h")) {
+
+        // Nếu không phải Admin thì ẩn phần thống kê và quản lý nhân viên
+        if (!userRole.equalsIgnoreCase("Admin") && (user != null && !user.equals("h"))) {
+            lnThongKe.setVisibility(View.GONE);
             lnNhanVien.setVisibility(View.GONE);
         }
     }
 }
-

@@ -1,10 +1,13 @@
 package com.example.duanmau.ui;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,6 +31,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     FloatingActionButton fab;
     EditText edtSearch;
     TextView tvSoLuongGioHang;
+    String userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,17 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         edtSearch = findViewById(R.id.edtSearch);
         tvSoLuongGioHang = findViewById(R.id.tvSoLuong);
         dao = new SanPhamDAO(this);
+
+        SharedPreferences pref = getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+        userRole = pref.getString("ROLE", "");
+
+        // Phân quyền: Chỉ Admin mới được THÊM, SỬA, XÓA sản phẩm. 
+        // Nhân viên chỉ được xem và mua hàng.
+        if (userRole.equalsIgnoreCase("Admin")) {
+            fab.setVisibility(View.VISIBLE);
+        } else {
+            fab.setVisibility(View.GONE);
+        }
 
         capNhatLv();
         updateCartBadge();
@@ -63,7 +78,11 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.itemCart).setOnClickListener(v -> {
-            startActivity(new Intent(this, GioHangActivity.class));
+            if (userRole.equalsIgnoreCase("Admin")) {
+                Toast.makeText(this, "Admin không được sử dụng giỏ hàng", Toast.LENGTH_SHORT).show();
+            } else {
+                startActivity(new Intent(this, GioHangActivity.class));
+            }
         });
     }
 
@@ -88,6 +107,10 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     }
 
     public void xoa(String id) {
+        if (!userRole.equalsIgnoreCase("Admin")) {
+            Toast.makeText(this, "Bạn không có quyền xóa", Toast.LENGTH_SHORT).show();
+            return;
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Xóa?");
         builder.setMessage("Bạn có muốn xóa không?");
@@ -102,6 +125,10 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     }
 
     public void sua(SanPham item) {
+        if (!userRole.equalsIgnoreCase("Admin")) {
+            Toast.makeText(this, "Bạn không có quyền sửa", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, EditSanPhamActivity.class);
         intent.putExtra("type", 1);
         intent.putExtra("maSanPham", item.getMaSanPham());
@@ -113,6 +140,10 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     }
 
     public void themVaoGioHang(SanPham item) {
+        if (userRole.equalsIgnoreCase("Admin")) {
+            Toast.makeText(this, "Admin không được mua hàng", Toast.LENGTH_SHORT).show();
+            return;
+        }
         HoaDonChiTiet hdct = new HoaDonChiTiet();
         hdct.setMaSanPham(item.getMaSanPham());
         hdct.setTenSanPham(item.getTenSanPham());

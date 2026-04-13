@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".ui.QuanLyKhachHangActivity">
+
     <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,14 +18,30 @@
         app:title="Quản lý khách hàng"
         app:navigationIcon="?attr/homeAsUpIndicator" />
 
-        <TextView
-            android:layout_width="wrap_content"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danh sách khách hàng"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"/>
+
+    <!-- Ô tìm kiếm -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:startIconDrawable="@android:drawable/ic_menu_search"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtSearchKhachHang"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Danh sách khách hàng"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:padding="10dp"/>
+            android:hint="Tìm kiếm theo số điện thoại"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,7 +51,6 @@
             android:id="@+id/lvKhachHang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/fabThemKhachHang"
             android:divider="@android:color/darker_gray"
             android:dividerHeight="1dp" />
 
@@ -47,7 +63,7 @@
             android:layout_margin="16dp"
             android:backgroundTint="#1E90FF"
             android:src="@android:drawable/ic_input_add"
-            android:contentDescription="Thêm danh mục" />
+            android:contentDescription="Thêm khách hàng" />
 
     </RelativeLayout>
 </LinearLayout>

@@ -48,7 +48,7 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
             tvNV.setText(item.getMaNhanVien());
             tvKH.setText("Mã KH: " + item.getMaKhachHang());
             tvNgay.setText(item.getNgayMua());
-            tvTien.setText(item.getTongTien() + " VNĐ");
+            tvTien.setText(item.getTongTien() + " Đ");
 
             imgXoa.setOnClickListener(v -> activity.xoa(String.valueOf(item.getMaHoaDon())));
             

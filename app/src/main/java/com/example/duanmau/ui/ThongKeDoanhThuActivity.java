@@ -11,12 +11,14 @@ import com.example.duanmau.dao.ThongKeDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class ThongKeDoanhThuActivity extends AppCompatActivity {
     Button btnThongKe;
     EditText edtTuNgay, edtDenNgay;
     TextView tvDoanhThu;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    // Định dạng dd/MM/yyyy để khớp với dữ liệu trong DbHelper
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     int mYear, mMonth, mDay;
 
     @Override
@@ -34,7 +36,7 @@ public class ThongKeDoanhThuActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR);
             mMonth = c.get(Calendar.MONTH);
             mDay = c.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog d = new DatePickerDialog(this, 0, (view, year, month, dayOfMonth) -> {
+            DatePickerDialog d = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
                 GregorianCalendar c1 = new GregorianCalendar(year, month, dayOfMonth);
                 edtTuNgay.setText(sdf.format(c1.getTime()));
             }, mYear, mMonth, mDay);
@@ -46,7 +48,7 @@ public class ThongKeDoanhThuActivity extends AppCompatActivity {
             mYear = c.get(Calendar.YEAR);
             mMonth = c.get(Calendar.MONTH);
             mDay = c.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog d = new DatePickerDialog(this, 0, (view, year, month, dayOfMonth) -> {
+            DatePickerDialog d = new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
                 GregorianCalendar c1 = new GregorianCalendar(year, month, dayOfMonth);
                 edtDenNgay.setText(sdf.format(c1.getTime()));
             }, mYear, mMonth, mDay);
@@ -56,7 +58,15 @@ public class ThongKeDoanhThuActivity extends AppCompatActivity {
         btnThongKe.setOnClickListener(v -> {
             String tuNgay = edtTuNgay.getText().toString();
             String denNgay = edtDenNgay.getText().toString();
+            
+            if (tuNgay.isEmpty() || denNgay.isEmpty()) {
+                tvDoanhThu.setText("Vui lòng chọn đầy đủ ngày");
+                return;
+            }
+
             ThongKeDAO dao = new ThongKeDAO(this);
+            // Chuyển đổi định dạng ngày để SQLite có thể so sánh BETWEEN (YYYY/MM/DD)
+            // Vì dữ liệu đang lưu dd/MM/yyyy nên ta cần xử lý logic so sánh ngày trong DAO hoặc đồng bộ format
             tvDoanhThu.setText("Doanh thu: " + dao.getDoanhThu(tuNgay, denNgay) + " VND");
         });
     }

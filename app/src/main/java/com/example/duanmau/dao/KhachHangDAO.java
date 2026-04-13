@@ -64,4 +64,9 @@ public class KhachHangDAO {
         List<KhachHang> list = getData(sql, id);
         return list.size() > 0 ? list.get(0) : null;
     }
+
+    public List<KhachHang> search(String phone) {
+        String sql = "SELECT * FROM KhachHang WHERE soDienThoai LIKE ?";
+        return getData(sql, "%" + phone + "%");
+    }
 }

@@ -21,6 +21,7 @@ import com.example.duanmau.model.KhachHang;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 public class GioHangActivity extends AppCompatActivity {
     ListView lv;
@@ -62,7 +63,8 @@ public class GioHangActivity extends AppCompatActivity {
             SharedPreferences pref = getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
             hd.setMaNhanVien(pref.getString("USERNAME", "admin"));
             hd.setMaKhachHang(((KhachHang) spKhachHang.getSelectedItem()).getMaKhachHang());
-            hd.setNgayMua(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+            // Đổi định dạng ngày sang dd/MM/yyyy để khớp với ThongKeDAO
+            hd.setNgayMua(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date()));
             hd.setTongTien(Cart.getTotal());
 
             long maHD = hdDao.insertHoaDon(hd);

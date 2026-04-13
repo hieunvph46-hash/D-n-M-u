@@ -36,7 +36,7 @@ public class TopKhachHangAdapter extends ArrayAdapter<KhachHang> {
 
             tvTen.setText(item.getHoTen());
             // We stored the total spend in the diaChi field for convenience in ThongKeDAO
-            tvChiTieu.setText("Chi tiêu: " + item.getDiaChi() + " VNĐ");
+            tvChiTieu.setText("Chi tiêu: " + item.getDiaChi() + " Đ");
         }
 
         return convertView;

@@ -3,6 +3,9 @@ package com.example.duanmau.ui;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
@@ -20,6 +23,7 @@ public class QuanLyKhachHangActivity extends AppCompatActivity {
     KhachHangDAO dao;
     KhachHangAdapter adapter;
     FloatingActionButton fab;
+    EditText edtSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class QuanLyKhachHangActivity extends AppCompatActivity {
 
         lv = findViewById(R.id.lvKhachHang);
         fab = findViewById(R.id.fabThemKhachHang);
+        edtSearch = findViewById(R.id.edtSearchKhachHang);
         dao = new KhachHangDAO(this);
 
         capNhatLv();
@@ -36,6 +41,22 @@ public class QuanLyKhachHangActivity extends AppCompatActivity {
             Intent intent = new Intent(this, EditKhachHangActivity.class);
             intent.putExtra("type", 0);
             startActivityForResult(intent, 999);
+        });
+
+        // Xử lý tìm kiếm
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                list = (ArrayList<KhachHang>) dao.search(s.toString());
+                adapter = new KhachHangAdapter(QuanLyKhachHangActivity.this, QuanLyKhachHangActivity.this, list);
+                lv.setAdapter(adapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
     }
 
