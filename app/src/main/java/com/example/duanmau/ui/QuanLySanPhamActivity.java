@@ -47,8 +47,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
         userRole = pref.getString("ROLE", "");
 
-        // Phân quyền: Chỉ Admin mới được THÊM, SỬA, XÓA sản phẩm. 
-        // Nhân viên chỉ được xem và mua hàng.
+        // Phân quyền: Chỉ Admin mới được THÊM sản phẩm. 
         if (userRole.equalsIgnoreCase("Admin")) {
             fab.setVisibility(View.VISIBLE);
         } else {
@@ -78,11 +77,8 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.itemCart).setOnClickListener(v -> {
-            if (userRole.equalsIgnoreCase("Admin")) {
-                Toast.makeText(this, "Admin không được sử dụng giỏ hàng", Toast.LENGTH_SHORT).show();
-            } else {
-                startActivity(new Intent(this, GioHangActivity.class));
-            }
+            // Cho phép cả Admin và Nhân viên vào giỏ hàng
+            startActivity(new Intent(this, GioHangActivity.class));
         });
     }
 
@@ -140,10 +136,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     }
 
     public void themVaoGioHang(SanPham item) {
-        if (userRole.equalsIgnoreCase("Admin")) {
-            Toast.makeText(this, "Admin không được mua hàng", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        // Cho phép cả Admin thêm vào giỏ hàng
         HoaDonChiTiet hdct = new HoaDonChiTiet();
         hdct.setMaSanPham(item.getMaSanPham());
         hdct.setTenSanPham(item.getTenSanPham());

@@ -52,14 +52,14 @@ public class SanPhamAdapter extends ArrayAdapter<SanPham> {
             tvSoLuong.setText("Tồn kho: " + item.getSoLuong());
 
             // PHÂN QUYỀN TRÊN TỪNG ITEM
+            imgGioHang.setVisibility(View.VISIBLE); // Admin vẫn thêm được vào giỏ hàng
+            
             if (userRole.equalsIgnoreCase("Admin")) {
-                // Admin: Được Sửa/Xóa, không được Mua
-                imgGioHang.setVisibility(View.GONE);
+                // Admin: Được Sửa/Xóa
                 imgSua.setVisibility(View.VISIBLE);
                 imgXoa.setVisibility(View.VISIBLE);
             } else {
-                // Nhân viên: Được Mua, không được Sửa/Xóa
-                imgGioHang.setVisibility(View.VISIBLE);
+                // Nhân viên: Không được Sửa/Xóa
                 imgSua.setVisibility(View.GONE);
                 imgXoa.setVisibility(View.GONE);
             }
