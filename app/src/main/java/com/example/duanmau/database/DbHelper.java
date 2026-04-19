@@ -22,7 +22,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         // Table SanPham
         String createTableSanPham = "CREATE TABLE SanPham (" +
-                "maSanPham INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                 "maSanPham INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenSanPham TEXT NOT NULL, " +
                 "giaBan INTEGER NOT NULL, " +
                 "soLuong INTEGER NOT NULL, " +
